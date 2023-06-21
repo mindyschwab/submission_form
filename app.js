@@ -5,21 +5,22 @@ form.addEventListener('submit', formSubmit);
 async function formSubmit(event) {
     event.preventDefault();
     const formData = new FormData(form);
-    console.log(formData.get('email'))
-    console.log(formData.get('repoURL'))
-    const data = new URLSearchParams(formData);
+    const email = formData.get('email');
+    const githubRepoUrl = formData.get('githubRepoUrl');
+    const data = JSON.stringify({ email, githubRepoUrl });
 
     try {
-        // using service to confirm that the correct data is being sent
-        const response = await fetch('https://reqres.in/api/users', {
+        const response = await fetch('https://7pu263mpcarw3lhazop5ec7u7e0bclzu.lambda-url.us-east-1.on.aws/', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: data,
         });
 
         let responseData;
         if (response.ok) {
             responseData = await response.json();
-            console.log(responseData);
             // Added alert to confirm that the form was submitted successfully, would typically redirect to another page
             alert('Form submitted successfully!');
         } else {
