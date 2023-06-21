@@ -6,6 +6,7 @@ main {
     height: 100vh;
     margin: 5%;
     font-family: 'Montserrat', sans-serif;
+    color: #303555;
 }
 
 .container {
@@ -51,7 +52,15 @@ button {
     border-radius: 5px;
     background-color: #303555;
     color: white;
-    font-size: medium;
+    font-size: 18px;
+    box-shadow: 10px 10px 20px -8px #303555;
+}
+
+button:hover {
+    background-color: rgb(228, 215, 33);
+    border: 1px solid white;
+    font-weight: bold;
+    color: #303555;
 }
 
 footer {
